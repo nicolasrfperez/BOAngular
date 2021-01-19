@@ -1,0 +1,79 @@
+<form [formGroup]="myForm" (ngSubmit)="guardar()">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="name" >
+        </mat-form-field>    
+        <div *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
+            <p *ngIf="myForm.get('name').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>SKU</mat-label>
+            <input matInput type="text" formControlName="sku" >
+        </mat-form-field>    
+        <div *ngIf="myForm.get('sku').errors && myForm.get('sku').dirty">
+            <p *ngIf="myForm.get('sku').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>    
+
+        <div *ngIf="myForm.get('description').errors && myForm.get('description').dirty">
+            <p *ngIf="myForm.get('description').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput type="text" formControlName="price" >
+        </mat-form-field>    
+        <div *ngIf="myForm.get('price').errors && myForm.get('price').dirty">
+            <p *ngIf="myForm.get('price').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="text" formControlName="quantity" >
+        </mat-form-field>    
+        <div *ngIf="myForm.get('quantity').errors && myForm.get('quantity').dirty">
+            <p *ngIf="myForm.get('quantity').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <select *ngIf="categorias.length>0" matNativeControl required formControlName="category">
+                <option *ngFor="let categoria of categorias" value="{{categoria._id}}">{{categoria.name}}</option>
+            </select>
+          </mat-form-field>
+          <div *ngIf="myForm.get('category').errors && myForm.get('category').dirty">
+            <p *ngIf="myForm.get('category').hasError('required')">El campo es obligatorio</p>
+            
+        </div>
+        
+    </div>
+    
+    
+    <div formArrayName="tags"
+        *ngFor="let tag of myForm.get('tags')['controls']; let i = index;">
+        <div [formGroupName]="i">
+            <input formControlName="name" placeholder="Tag" >
+        </div>
+
+        Tag: {{ myForm.controls.tags.controls[i].controls.name.value }}
+    </div>
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+    <button mat-raised-button type="submit" color="primary" >Guardar</button>
+</form>

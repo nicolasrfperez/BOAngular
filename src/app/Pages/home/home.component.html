@@ -1,0 +1,11 @@
+<div *ngIf="!loading">
+    <div  *ngFor="let producto of productos">
+        <app-producto
+            [data]="producto"
+            (reload)="getProductos()"
+        ></app-producto>
+    </div>
+</div>
+<div *ngIf="loading">Loading ...</div>
+
+<p *ngIf="productos.length==0">Hay Productos</p>
