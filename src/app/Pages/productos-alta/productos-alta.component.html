@@ -1,29 +1,26 @@
 <form [formGroup]="myForm" (ngSubmit)="guardar()">
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Nombre</mat-label>
-            <input matInput type="text" formControlName="name" >
-        </mat-form-field>    
+        
+            <label>Nombre</label>
+            <input input type="text" formControlName="name" >
+        
         <div *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
             <p *ngIf="myForm.get('name').hasError('required')">El campo es obligatorio</p>
             
         </div>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>SKU</mat-label>
-            <input matInput type="text" formControlName="sku" >
-        </mat-form-field>    
+        <label>SKU</label>
+            <input input type="text" formControlName="sku" >
+    
         <div *ngIf="myForm.get('sku').errors && myForm.get('sku').dirty">
             <p *ngIf="myForm.get('sku').hasError('required')">El campo es obligatorio</p>
             
         </div>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Descripcion</mat-label>
-            <textarea matInput formControlName="description"></textarea>
-        </mat-form-field>    
+        <label>Descripcion</label>
+        <input input type="text" formControlName="descripcion" >
 
         <div *ngIf="myForm.get('description').errors && myForm.get('description').dirty">
             <p *ngIf="myForm.get('description').hasError('required')">El campo es obligatorio</p>
@@ -31,32 +28,29 @@
         </div>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Precio</mat-label>
-            <input matInput type="text" formControlName="price" >
-        </mat-form-field>    
+        <label>Precio</label>
+            <input input type="text" formControlName="precio" >
+     
         <div *ngIf="myForm.get('price').errors && myForm.get('price').dirty">
             <p *ngIf="myForm.get('price').hasError('required')">El campo es obligatorio</p>
             
         </div>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Cantidad</mat-label>
-            <input matInput type="text" formControlName="quantity" >
-        </mat-form-field>    
-        <div *ngIf="myForm.get('quantity').errors && myForm.get('quantity').dirty">
+        <label>Cantidad</label>
+            <input input type="text" formControlName="cantidad" >
+             <div *ngIf="myForm.get('quantity').errors && myForm.get('quantity').dirty">
             <p *ngIf="myForm.get('quantity').hasError('required')">El campo es obligatorio</p>
             
         </div>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Categoria</mat-label>
+        
+            <label>Categoria</label>
             <select *ngIf="categorias.length>0" matNativeControl required formControlName="category">
                 <option *ngFor="let categoria of categorias" value="{{categoria._id}}">{{categoria.name}}</option>
             </select>
-          </mat-form-field>
+
           <div *ngIf="myForm.get('category').errors && myForm.get('category').dirty">
             <p *ngIf="myForm.get('category').hasError('required')">El campo es obligatorio</p>
             
@@ -77,3 +71,32 @@
 
     <button mat-raised-button type="submit" color="primary" >Guardar</button>
 </form>
+<!--<form [formGroup]="myForm" (ngSubmit)="registro()">
+    <div>
+        <label for="">Nombre</label>
+        <input type="text" formControlName="name">
+    </div>
+    <div *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
+        <p *ngIf="myForm.get('name').hasError('required')">El campo es obligatorio</p>
+        
+    </div>
+    <div>
+        <label for="">Email</label>
+        <input type="email" formControlName="email" [ngClass]="{error:myForm.get('email').errors && myForm.get('email').dirty,warning:myForm.get('email').hasError('minlength')}">
+    </div>
+    <div *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+        <p *ngIf="myForm.get('email').hasError('required')">El campo es obligatorio</p>
+        <p *ngIf="myForm.get('email').hasError('minlength')">Debe escribir al menos 3 caracteres</p>
+        
+    </div>
+    <div>
+        <label for="">Contraseña</label>
+        <input type="password" formControlName="password">
+    </div>
+    <div *ngIf="myForm.get('password').errors && myForm.get('password').dirty">
+        <p *ngIf="myForm.get('password').hasError('required')">El campo es obligatorio</p>
+        
+    </div>
+    <input type="submit" value="Registrarse" [disabled]="myForm.invalid">
+</form>
+-->
